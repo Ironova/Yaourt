@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:itemandroid="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/a_propos"
+        android:title="À propos"
+        android:orderInCategory="99"
+        android:showAsAction="never"
+        android:onClick="OpenAPropos"/>
+
+    <item android:id="@+id/reset"
+        android:title="Réinitialiser"
+        android:showAsAction="always"
+        android:onClick="reset"/>
+
+</menu>

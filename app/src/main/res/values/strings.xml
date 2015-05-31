@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Yaourt</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="convertir_en"></string>
+    <string name="title_activity_a_propos">À propos</string>
+</resources>
