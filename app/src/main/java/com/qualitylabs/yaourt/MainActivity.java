@@ -83,28 +83,39 @@ public class MainActivity extends Activity {
         @Override
         public void onClick(View v) {
             if (brut_net.getCheckedRadioButtonId() == R.id.radius_brut) {
-                conv_en.setText("Conversion en salaire net");
-                Double result = Double.valueOf(salaire.getText().toString());
-                result = 0.77 * result;
-                double horaire = result / 151.67;
-                double annuel = result * 12;
-                resultat.setText(String.valueOf(df.format(result) + " €"));
-                salaireHoraire.setText(String.valueOf(df.format(horaire) + " € Horaire"));
-                salaireAnnuel.setText(String.valueOf(df.format(annuel) + " € Annuel"));
+                try {
+                    Double result = Double.valueOf(salaire.getText().toString());
+                    result = 0.77 * result;
+                    double horaire = result / 151.67;
+                    double annuel = result * 12;
+                    resultat.setText(String.valueOf(df.format(result) + " €"));
+                    salaireHoraire.setText(String.valueOf(df.format(horaire) + " € Horaire"));
+                    salaireAnnuel.setText(String.valueOf(df.format(annuel) + " € Annuel"));
+                    conv_en.setText("Conversion en salaire net");
 
-                //Création d'un Toast avec (NomActivité.this, "texte à afficher", Toast.LENGTH_[SHORT/LONG] pour la durée).show()
-                Toast.makeText(MainActivity.this, "Salaire converti en net avec succès!", Toast.LENGTH_SHORT).show();
+                    //Création d'un Toast avec (NomActivité.this, "texte à afficher", Toast.LENGTH_[SHORT/LONG] pour la durée).show()
+                    Toast.makeText(MainActivity.this, "Salaire converti en net avec succès!", Toast.LENGTH_SHORT).show();
+
+                }catch (NumberFormatException e){
+                    Toast.makeText(MainActivity.this, "Vous devez entrer un salaire !", Toast.LENGTH_SHORT).show();
+                }
             } else {
-                conv_en.setText("Conversion en salaire brut");
-                Double result = Double.valueOf(salaire.getText().toString());
-                result = 1.23 * result;
-                double horaire = result / 151.67;
-                double annuel = result * 12;
-                resultat.setText(String.valueOf(df.format(result) + "€"));
-                salaireHoraire.setText(String.valueOf(df.format(horaire) + " € Horaire"));
-                salaireAnnuel.setText(String.valueOf(df.format(annuel) + " € Annuel"));
-                //Création d'un Toast avec (NomActivité.this, "texte à afficher", Toast.LENGTH_[SHORT/LONG] pour la durée).show()
-                Toast.makeText(MainActivity.this, "Salaire converti en brut avec succès!", Toast.LENGTH_SHORT).show();
+                try {
+                    Double result = Double.valueOf(salaire.getText().toString());
+                    result = 1.23 * result;
+                    double horaire = result / 151.67;
+                    double annuel = result * 12;
+                    resultat.setText(String.valueOf(df.format(result) + "€"));
+                    salaireHoraire.setText(String.valueOf(df.format(horaire) + " € Horaire"));
+                    salaireAnnuel.setText(String.valueOf(df.format(annuel) + " € Annuel"));
+                    conv_en.setText("Conversion en salaire brut");
+
+                    //Création d'un Toast avec (NomActivité.this, "texte à afficher", Toast.LENGTH_[SHORT/LONG] pour la durée).show()
+                    Toast.makeText(MainActivity.this, "Salaire converti en brut avec succès!", Toast.LENGTH_SHORT).show();
+
+                }catch (NumberFormatException e){
+                    Toast.makeText(MainActivity.this, "Vous devez entrer un salaire !", Toast.LENGTH_SHORT).show();
+                }
             }
         }
 
@@ -128,7 +139,7 @@ public class MainActivity extends Activity {
         salaireAnnuel.setText("");
         salaireHoraire.setText("");
         salaire.setText("");
-        brut_net.clearCheck();
+        brut_net.check(R.id.radius_brut);
         Toast.makeText(MainActivity.this, "Réinitialisé", Toast.LENGTH_SHORT).show();
     }
 }
